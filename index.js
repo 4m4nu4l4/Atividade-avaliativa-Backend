@@ -5,9 +5,9 @@ app.use(express.json());
 
 const usuarios = [];
 
-usuarios.push({ id: 1, nome: "Emanuele", email: 19 });
-usuarios.push({ id: 2, nome: "Maria", email: 19 });
-usuarios.push({ id: 3, nome: "Sarah", email: 22 });
+usuarios.push({ id: 1, nome: "Emanuele", email: emanuele@gmail });
+usuarios.push({ id: 2, nome: "Maria", email: maria@foo });
+usuarios.push({ id: 3, nome: "Sarah", email: saritaitaita@gmail });
 
 console.log(usuarios);
 
