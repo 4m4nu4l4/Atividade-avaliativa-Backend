@@ -1,4 +1,7 @@
 const express = require('express');
+const userApi = require('./api/user');
+const loggerApi = require('./api/logger');
+const database = require('./config/database');
 
 const app = express();
 app.use(express.json());
