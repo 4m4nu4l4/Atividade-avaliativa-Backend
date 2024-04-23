@@ -1,4 +1,4 @@
-const controller = require('../controller/post');
+const postController = require('../controllers/PostController');
 
 class UserApi {
   async criarPostagem(req, res) {
@@ -8,7 +8,7 @@ class UserApi {
 
     try {
       const post = await controller.criarPostagem(titulo, conteudo, autorId);
-      return res.status(201).send(user);
+      return res.status(201).send(post);
     } catch (error) {
       return res.status(400).send({ error: error.message })
     }
@@ -41,29 +41,6 @@ class UserApi {
     try {
       const posts = await controller.listarPostagens();
       return res.status(200).send(posts);
-    } catch (error) {
-      return res.status(400).send({ error: error.message })
-    }
-  }
-
-  // Método para login
-  async login(req, res) {
-    try {
-      const { email, senha } = req.body;
-      const token = await controller.login(email, senha);
-      return res.status(200).send(token);
-    } catch (error) {
-      return res.status(400).send({ error: error.message })
-    }
-  }
-
-  // Método para validar o token
-  async validarToken(req, res, next) {
-    const token = req.headers.authorization;
-
-    try {
-      await controller.validarToken(token);
-      next();
     } catch (error) {
       return res.status(400).send({ error: error.message })
     }

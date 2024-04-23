@@ -8,7 +8,7 @@ class UserApi {
 
         try {
             const user = await controller.criarUsuario(nome, email, senha);
-            return res.status(201).send(user);
+            return res.status(200).send(user);
         } catch (error) {
             return res.status(400).send({ error: error.message })
         }
@@ -31,7 +31,7 @@ class UserApi {
 
         try {
             await controller.deletarUsuario(Number(id));
-            return res.status(204).send();
+            return res.status(200).send();
         } catch (error) {
             return res.status(400).send({ error: error.message })
         }

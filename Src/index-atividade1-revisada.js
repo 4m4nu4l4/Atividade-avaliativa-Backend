@@ -1,7 +1,7 @@
 const express = require('express');
-const userApi = require('./api/user');
+const userApi = require('./api/users');
 const loggerApi = require('./api/logger');
-const database = require('./config/database');
+//const database = require('./config/database');
 
 const app = express();
 app.use(express.json());
@@ -27,14 +27,14 @@ app.get('/postagem/usuario/:id', (req, res) => {
     const postagensUsuario = postagens.filter(p => p.autorId === Number(id))
 
     res.json(postagensUsuario);
-})
+});
 
 app.post('/usuario', (req, res) => {
     const { nome, email } = req.body;
 
     let id = 0;
 
-    for (const usuario of usuarios) {
+    for (const user of usuarios) {
         if (usuario.id > id) {
             id = usuario.id;
         }
