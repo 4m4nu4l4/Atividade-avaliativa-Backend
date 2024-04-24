@@ -1,10 +1,11 @@
-const postController = require('../controllers/PostController');
+const postController = require('../controllers/post');
 
-class UserApi {
+class PostApi {
   async criarPostagem(req, res) {
     const titulo = req.body.titulo;
     const conteudo = req.body.conteudo;
     const autorId = req.body.autorId;
+    const controller = new postController();
 
     try {
       const post = await controller.criarPostagem(titulo, conteudo, autorId);
@@ -17,6 +18,7 @@ class UserApi {
   async alterarPostagem(req, res) {
     const { id } = req.params;
     const { titulo, conteudo, autorId } = req.body;
+    const controller = new postController();
 
     try {
       const post = await controller.alterarPostagem(Number(id), titulo, conteudo, autorId);
@@ -28,6 +30,7 @@ class UserApi {
 
   async deletarPostagem(req, res) {
     const { id } = req.params;
+    const controller = new postController();
 
     try {
       await controller.deletarPostagem(Number(id));
@@ -47,4 +50,4 @@ class UserApi {
   }
 }
 
-module.exports = new UserApi();
+module.exports = PostApi;

@@ -1,30 +1,10 @@
 const Sequelize = require('sequelize');
-const mongoose = require('mongoose');
 
-class Database {
-    constructor() {
-        this.init();
-        this.mongoInit();
-    }
+const database = new Sequelize(
+    'javascript_mvc',
+    'root',
+    '',
+    { host: 'localhost', dialect: 'mysql' }
+)
 
-    init() {
-        this.db = new Sequelize (
-            'bancoDoMVC',
-            'postgres-mvc',
-            'postgres',
-            { host: 'localhost', dialect: 'postgres' }
-        )
-    }
-
-    mongoInit() {
-        this.mongoConnection = mongoose.connect(
-            'mongodb://localhost:27017/mvc',
-            {
-                useNewUrlParser: true,
-                useUnifiedTopology: true
-            }
-        )
-    }
-}
-
-module.exports = new Database();
+module.exports = database;
